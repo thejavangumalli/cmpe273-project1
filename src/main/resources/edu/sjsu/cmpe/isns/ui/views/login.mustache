@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>IntraStore Notification System</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <!-- Le styles -->
+    <!--<link href="css/bootstrap.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="css/bootstrap.css"  type="text/css"/>
+    <style type="text/css">
+     /* Override some defaults */
+      html, body {
+	background-color: #CCC;
+      }
+      body {
+        padding-top: 40px; 
+      }
+      .container {
+	width: 751px;
+	margin-left: 143px;
+	margin-right: -303px;
+      }
+	table, td, th
+		{
+		border:1px solid green;
+		}
+		th
+		{
+	background-color: #666;
+	color: white;
+		}
+
+
+      /* The white background content wrapper */
+      .container > .content {
+	background-color: #999;
+	margin: 0 -20px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
+	border-radius: 10px 10px 10px 10px;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+	box-shadow: 0 1px 2px rgba(0,0,0,.15);
+	padding-bottom: 20px;
+	padding-left: 500px;
+	padding-right: 500px;
+	padding-top: 20px;
+      }
+
+
+	  .login-form {
+	margin-left: -500px;
+	margin-right: -480px;
+	  }
+	
+	  legend {
+		margin-right: -50px;
+		font-weight: bold;
+	  	color: #404040;
+	  }
+
+
+    </style>
+
+
+</head>
+<body>
+<div id="login">
+  <div class="container">
+    <div class="content" align="center">
+      <div class="row">
+        <div class="login-form">
+          <h2 align="center">Login</h2>
+          <form>
+            <fieldset>
+              <div class="clearfix">
+                <div align="center">
+                  <input type="text" id="username" name="username" placeholder="Username">
+                </div>
+              </div>
+              <div class="clearfix">
+                <div align="center">
+                  <input type="password"  id="password" name="password" placeholder="Password">
+                </div>
+              </div>
+ 
+             
+              <div align="center">
+                <button id="btn_Submit" type="button" name="btn_Submit" class="btn btn-primary">Sign in</button>
+                
+              </div>
+            </fieldset>
+          </form>
+		  <form id="login_form" action="/login/2">
+		    <div align="center">
+		      <button type="submit" id="btn_Reg" class="btn btn-success">Register now</button>
+	        </div>
+		  </form>
+		</div>
+      </div>
+    </div>
+  </div>
+  </div>
+<!-- script tags -->
+            <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+            <!-- Latest compiled and minified JavaScript -->
+            <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"> 
+			</script> 
+</body>
+</html>

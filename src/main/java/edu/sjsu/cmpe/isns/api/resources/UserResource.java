@@ -175,11 +175,25 @@ public class UserResource {
 	}
 
 
-@Path("/personEmail")
+	@Path("/personEmail")
 	@POST
 	public String personEmail(@FormParam("username") String username) throws Exception{
 		DBConnection dbc=new DBConnection("user");
 		dbc.sendpersonEmail(username);
+		return null;
+	}
+	@Path("/storeEmail")
+	@GET
+	public String storeEmail() throws Exception{
+		DBConnection dbc=new DBConnection("user");
+		dbc.sendStoreEmail();
+		return null;
+	}
+	@Path("/deptEmail")
+	@POST
+	public String deptEmail(@FormParam("department") String department) throws Exception{
+		DBConnection dbc=new DBConnection("user");
+		dbc.sendDeptEmail(department);
 		return null;
 	}
 }

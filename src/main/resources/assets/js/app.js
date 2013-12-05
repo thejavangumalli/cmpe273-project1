@@ -86,3 +86,31 @@ $("#personbtn_Send").click(function() {
     }
     });
 });
+$("#btn_Send").click(function() {
+    $.ajax({
+    url: "/v1/users/storeEmail",
+    type: 'GET',
+    async: 'false',
+    contentType: 'application/json',
+    success: function(response) {
+    	 
+    },
+    error: function(data,status,er){
+    }
+    });
+});
+$("#deptbtn_Send").click(function() {
+    var department= $("#txt_dept").val();
+	$.ajax({
+    url: "/v1/users/deptEmail",
+    type: 'POST',
+    async: 'false',
+    data:'department='+department,
+    contentType: 'application/x-www-form-urlencoded',
+    success: function(response) {
+    	 
+    },
+    error: function(data,status,er){
+    }
+    });
+});

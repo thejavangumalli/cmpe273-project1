@@ -40,4 +40,35 @@ public class UserResource {
 		// do nothing
 	}
 
+@GET
+
+	// @Path("/alldeptusers")
+
+	@Path("/display/{dept}")
+
+	@Produces(MediaType.APPLICATION_JSON)
+
+	public Response getdeptUsers(@PathParam("dept") String department) throws UnknownHostException
+
+	{
+
+		UsersDto usersResponse1 = new UsersDto();
+		System.out.println(usersResponse1.getAlldeptUsers(department));
+
+		String res="{\"username\":["+usersResponse1.getAlldeptUsers(department)+"]}";
+
+		int position=res.lastIndexOf(",");
+
+		String jsonBody = res.substring(0,position)+""+res.substring(position+1);
+
+
+		return Response.status(200)
+
+				.entity(jsonBody)
+
+				.build();
+
+	}
+
+
 }

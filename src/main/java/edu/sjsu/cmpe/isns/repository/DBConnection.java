@@ -49,7 +49,31 @@ public class DBConnection {
 		coll = database.getCollection(collectionTable);
 		
 	}
-
-
+    
+    public String getAllUsersInDepartment(String dept) {
+		String deptuser="";
+		ArrayList<User> deptList = new ArrayList<User>();
+		BasicDBObject findQuery = new BasicDBObject("department", dept);
+		//findQuery.put("department", dept);
+		//coll = database.getCollection("user");
+		DBCursor docs = coll.find(findQuery);
+		
+		while (docs.hasNext()) {
+			DBObject doc = docs.next();
+			User usr = new User();
+			//usr.setId((Integer) doc.get("id"));
+			usr.setFirstName(doc.get("firstName").toString());
+			usr.setLastName(doc.get("lastName").toString());
+			usr.seteMail(doc.get("eMail").toString());
+			usr.setPhoneNumber(doc.get("phoneNumber").toString());
+			usr.setDepartment(doc.get("department").toString());
+			//System.out.println(usr.getFirstName()+""+usr.getId());
+			deptList.add(usr);
+			deptuser+="\""+doc.get("userName").toString()+"\""+",";
+			//System.out.println("id"+doc.get("id")+"Name "+doc.get("firstName"));
+		}
+		return deptuser;
+		 
+	}
 	
 }

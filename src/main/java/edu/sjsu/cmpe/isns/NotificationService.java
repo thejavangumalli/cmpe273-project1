@@ -46,6 +46,8 @@ public class NotificationService extends
 
 		/** UI Resources */
 		 environment.addResource(new HomeResource());
+		 environment.addResource(new AdminResource());
+		 environment.addResource(new RegistrationResource());
 
 	}
 }

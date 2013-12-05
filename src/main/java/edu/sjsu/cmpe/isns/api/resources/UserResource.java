@@ -172,7 +172,14 @@ public class UserResource {
 		return Response.status(200)
 				.entity(usersResponse1.DeleteUser(userName))
 				.build();
-	} 
+	}
 
 
+@Path("/personEmail")
+	@POST
+	public String personEmail(@FormParam("username") String username) throws Exception{
+		DBConnection dbc=new DBConnection("user");
+		dbc.sendpersonEmail(username);
+		return null;
+	}
 }

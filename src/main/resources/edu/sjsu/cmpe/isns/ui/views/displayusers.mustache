@@ -1,0 +1,79 @@
+
+<html>
+        <head>
+            <title>Home</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <!-- Latest compiled and minified CSS -->
+            <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" media="screen">
+            <!-- Optional theme -->
+            <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
+			<script src="//code.jquery.com/jquery.js"></script>
+
+			
+        </head>
+        <body>
+            <div class="container">
+                <div class="jumbotron">
+                    <!-- calls getBooks() from HomeResource -->
+                    <table class="table table-hover" id="test">
+                    {{#users}}
+                        <tr>
+                          <td>{{firstName}}</td>
+		    				<td>{{lastName}}</td>
+							<td>{{department}}</td>
+							<td>{{eMail}}</td>
+							<td>{{phoneNumber}}</td>
+							 <td>
+							 <div id="abd" visible="false">
+							 <button id="{{lastName}}" type="button" name="del" class="btn btn-primary" >Delete User</button>
+							 </div>
+							 </td>  
+                        </tr>
+                    {{/users}}
+                    </table>
+                </div>
+            </div> <!-- end of container -->
+           
+            <!-- script tags -->
+            <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+            
+            <script src="../assets/js/app.js"></script>
+            <!-- Latest compiled and minified JavaScript -->
+            <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+			<script>
+			$(":button").click(function() {
+    //var isbn = this.id;
+	
+	var lname=this.id;
+	alert("In Delete "+lname);
+	var URL = "/v1/users/all/users/v1/delete/"+lname;
+	   $.ajax({
+    url: URL,
+    type: 'DELETE',
+    async: 'false',
+    contentType: 'application/x-www-form-urlencoded',
+    success: function(response) {
+    alert("You are Successfully  Deleted!");
+   	window.location.reload();
+    },
+    error: function(data,status,er){
+    	
+    	
+    	alert("Please enter valid details"+data.error);
+    	console.log("error ", data.error+""+status)}
+    	
+    });
+	    $('button').each(function(){
+        if(location.port === "9001")
+        {
+                $(this).prop('disabled', true);
+        }
+
+         });
+	
+});
+
+			</script>
+	
+        </body>
+</html>

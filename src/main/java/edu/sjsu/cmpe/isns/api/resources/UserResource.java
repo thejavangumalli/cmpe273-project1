@@ -112,6 +112,55 @@ public class UserResource {
 				.build();
 
 	}
+		@POST
+
+	@Path("/login")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	public Response validateUser(@FormParam("username") String username,
+			@FormParam("password") String password) throws UnknownHostException 
+			{
+		//username="gaurav";
+		//password="gaurav";
+		System.out.println("In Login from Jqery");
+		String department = null,userNm = null;
+		boolean flag=false;
+
+		UsersDto usersResponse1 = new UsersDto();
+		System.out.println("username"+username+"password"+password+""+usersResponse1.getUsers().size());
+		//List<User> usr=usersResponse1.getAlldeptUsers(department);
+		//usersResponse1.getUsers();
+		for(int i=0;i<usersResponse1.getUsers().size();i++)
+		{
+			System.out.println(usersResponse1.getUsers().get(i).getUserName()+",");
+			if(username.equals(usersResponse1.getUsers().get(i).getUserName())&&password.equals(usersResponse1.getUsers().get(i).getPassword()))
+			{
+				System.out.println(userNm+","+department);
+				department=usersResponse1.getUsers().get(i).getDepartment();
+				userNm=usersResponse1.getUsers().get(i).getUserName();
+				flag=true;
+				break;
+			}
+		}
+		System.out.println(userNm+","+department);
+		//System.out.println(usersResponse1);
+		// return Response.ok(userNm+","+department).build();
+		//return null;
+		if(flag)
+		{
+			System.out.println("{\"username\":\""+userNm+"\",\"department\":\""+department+"\"}");
+			return Response.status(200)
+					.entity("{\"username\":\""+userNm+"\",\"department\":\""+department+"\"}")
+					.build();
+		}
+		else
+		{
+			System.out.println("ERRRRROROO");
+			return Response.status(400)
+					.entity("Invalid User")
+					.build();
+		}
+			}
 	@DELETE
 	@Path("/all/users/v1/delete/{username}")
 

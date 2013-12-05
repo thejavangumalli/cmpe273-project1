@@ -83,7 +83,7 @@ public class UserResource {
 				.entity(usersResponse)
 				.build();
 	}
-@GET
+	@GET
 
 	// @Path("/alldeptusers")
 
@@ -112,6 +112,18 @@ public class UserResource {
 				.build();
 
 	}
+	@DELETE
+	@Path("/all/users/v1/delete/{username}")
+
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response DeleteUserByUserName(@PathParam("username") String userName) throws UnknownHostException 
+	{
+		UsersDto usersResponse1 = new UsersDto();
+		System.out.println(usersResponse1);
+		return Response.status(200)
+				.entity(usersResponse1.DeleteUser(userName))
+				.build();
+	} 
 
 
 }

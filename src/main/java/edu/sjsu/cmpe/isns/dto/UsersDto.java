@@ -26,7 +26,16 @@ import edu.sjsu.cmpe.isns.repository.DBConnection;
 		}
 
 		
-
+		/**
+		 * @return the User
+		 * @throws UnknownHostException 
+		 */
+		public List<User> getUsers() throws UnknownHostException {
+			DBConnection db=new DBConnection("user");
+			//this.Users = db.usersInStore();
+			return db.usersInStore();
+		}
+		
 		/**
 		 * @param User
 		 *            the User to set
@@ -38,6 +47,14 @@ import edu.sjsu.cmpe.isns.repository.DBConnection;
 			return  db.getAllUsersInDepartment(department);
 			// TODO Auto-generated method stub
 			
+		}
+
+		public boolean DeleteUser(String userName) throws UnknownHostException 
+		{
+			DBConnection db=new DBConnection("user");
+			
+			  return db.DeleteEmployeeByUserName(userName);
+			   
 		}
 		
 		

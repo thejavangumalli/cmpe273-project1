@@ -69,6 +69,7 @@
 
 </head>
 <body>
+<script src="../assets/js/controller.js"></script> 
 <div id="login">
   <div class="container">
     <div class="content" align="center">
@@ -105,8 +106,141 @@
     </div>
   </div>
   </div>
+  <div id="Admin" hidden="true" class="content">
+<div align="right">
+   <h5>Hi <label id="usrnm" name="usrnm">username</label> from <label id="deptnm" name="deptnm">department</label> department!!!</h5>
+  </div>
+  
+  <table width="500" border="1" align="center" height="50" >
+  <td>
+  <form method="GET" action="/all/users/res">  
+    <th scope="row"><input type="submit" name="Display Users" id="btn_usr" value="Users"></th>
+    </form>
+  </td>
+  <td>
+    <th scope="row"><input type="button" onclick="searchUserByDept()" name="button" id="button" value="Users In Dept"></th>
+  </td>
+    <td>
+  <form>
+    <th scope="row"><input type="button" name="Person Notification" id="notifyPerson" value="Person Notification" onMouseDown="personClicked()"></th>
+	</form>
+  </td>
+  <td>
+  <form>
+    <th  scope="row"><input type="button" name="DeptWide Notification" id="notifyDept" value="DeptWide Notification" onClick="deptClicked()"></th>
+	</form>
+  </td>
+  <td>
+ <th scope="row"><input type="button" name="StoreWide Notification" id="notify"  value="StoreWide Notification" onMouseDown="storeClicked()"></th>
+  </td>
+  
+</table>
+
+<br/>
+<br/>
+<div class="delete" id="delete" align="center" > 
+Username to delete:
+<input type="text" id="usernameDelete" name="usernameDelete">
+<br/><br/>
+<input type="button" onclick="deleteUser()" id="deleteButton" name="deleteButton" value="Delete User">
+</div>
+<br/>
+<div id="streWide" hidden="true" align="center">
+<form>
+<br/>
+<br/>
+Enter Your Message
+<br/>
+
+<textarea name="msgReader" id="txtArea_Id">
+</textarea>
+<br/>
+<button id="btn_Send" type="button" onclick="fireMe()">Send Message</button>
+</form>
+</div>
+<div id="deptWide" hidden="true" align="center">
+<form>
+<br/>
+<br/>
+<br/>
+Enter the department name:<input type="text" name="dept_txt" id="txt_dept"/>
+<br/>
+<br/>
+Enter Your Message
+<br/>
+<textarea name="deptmsgReader" id="depttxtArea_Id">
+</textarea>
+<br/>
+<button id="deptbtn_Send" type="button" onclick="fireMeDept()">Send Message</button>
+</form>
+</div>
+<div id="person" hidden="true" align="center">
+<form>
+<br/>
+<br/>
+<br/>
+Enter the Employee name:<input type="text" name="person_txt" id="txt_person"/>
+<br/>
+<br/>
+Enter Your Message
+<br/>
+<textarea name="personmsgReader" id="persontxtArea_Id">
+</textarea>
+<br/>
+
+<button id="personbtn_Send" type="button" onclick="fireMePerson()">Send Message</button>
+</form>
+</div>
+
+
+  </div>
+     <!-- /container -->
+<script>
+$( "#txt_dept" ).autocomplete({
+  source: [ "shopping","books","computer" ]
+});
+</script>
+<script>
+$( "#txt_person" ).autocomplete({
+  source: [ "theja","raj","gaurav","santhu","madhulika" ]
+});
+</script>
+<script>
+$( "#depttxtArea_Id" ).autocomplete({
+  source: [ "Customer waiting for help from Electronics department. Need employee to attend immediately!!",
+			"Checkout lines increasing due to sales. Checkout employees! Move to the billing section",
+			"New Clothing stock arrived.. Employee from Clothing department..please attend immediately.",
+			"All employees from home department should be attended during christmas kitchenware sale" ]
+});
+</script>
+<script>
+$( "#persontxtArea_Id" ).autocomplete({
+  source: [ "Attend the person at bill desk",
+  			"customer here needs to know whether a credit card can be used for purchase a Gift card worth  $500. Please attend to Billing section number 6",
+  			"Dear manager, Need your approval for an item price match proposed by customer",
+  			"Customer waiting for you to talk you about the computer sold yesterday" ]
+});
+</script>
+<script>
+$( "#txtArea_Id" ).autocomplete({
+  source: [ "Dear employees.. Observed a suspicious person at the mobile department. Help needed soon!",
+  "All Employees!! Christmas special events at store.. Potluck plan! More details soon",
+  "Thanksgiving and Black Friday holiday Notice: Employees should work for extra hours" ]
+});
+</script>
+
 <!-- script tags -->
             <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+            <script src="//code.jquery.com/jquery.js"></script>
+            <script src="../assets/js/app.js"></script>
+			<script src="../assets/js/stomp.js"></script> 
+			<script src="../assets/js/pub_store.js"></script>
+			<script src="../assets/js/pub_dept.js"></script>
+			<script src="../assets/js/listener_person.js"></script> 
+			<script src="../assets/js/listener_dept.js"></script>
+						<script src="../assets/js/pub_person.js"></script> 
+						<script src="../assets/js/listener_store.js"></script>
+						
             <!-- Latest compiled and minified JavaScript -->
             <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"> 
 			</script> 

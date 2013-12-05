@@ -49,6 +49,36 @@ public class DBConnection {
 		coll = database.getCollection(collectionTable);
 		
 	}
+public void StoreUser(edu.sjsu.cmpe.isns.domain.User request) {
+		BasicDBObject document = new BasicDBObject();
+		//System.out.println("In Store User"+request.getUserName());
+		 if(request.getUserName()!=null)
+		{
+			BasicDBObject findQuery = new BasicDBObject("userName",request.getUserName());
+			coll = database.getCollection("user");
+			DBObject userNm = coll.findOne(findQuery);
+			//System.out.println(userNm);
+			//System.out.println("User Name"+userNm.get("userName"));
+			if((userNm==null)||(userNm.get("userName")==null))
+			{
+			//document.put("_id", request.getId());
+			document.put("userName",request.getUserName());
+			document.put("password",request.getPassword());
+			document.put("firstName", request.getFirstName());
+			document.put("lastName", request.getLastName());
+			document.put("eMail", request.geteMail());
+			document.put("phoneNumber", request.getPhoneNumber());
+			document.put("department", request.getDepartment());
+			coll.insert(document);
+			}
+			
+		}
+		
+		
+
+	}
+
+
     
     public String getAllUsersInDepartment(String dept) {
 		String deptuser="";

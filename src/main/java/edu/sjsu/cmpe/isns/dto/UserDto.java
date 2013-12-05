@@ -38,6 +38,13 @@ public class UserDto extends LinksDto {
 		DBConnection dbc = new DBConnection("user");
 		// return dbc.establishConnection();
 	}
+	public void createUser(User usr) throws Exception {
+		DBConnection dbc = new DBConnection("user");
+		emails.add(usr.geteMail().toString());
+		@SuppressWarnings("unused")
+		AwsEmail email=new AwsEmail(emails,"you are successfully registered");
+		dbc.StoreUser(usr);
+	}
 
 	
 	public ArrayList<User> getAllUsers() throws UnknownHostException {
